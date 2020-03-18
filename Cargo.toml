@@ -1,0 +1,13 @@
+[package]
+name = "place_holder_website"
+version = "0.1.0"
+authors = ["aedius"]
+edition = "2018"
+build = "src/build.rs"
+
+[build-dependencies]
+ructe = { version = "^0.6.0",  features = ["mime03"] }
+
+[dependencies]
+tiny_http="0.6.2"
+mime = "~0.3"
