@@ -10,7 +10,7 @@ use templates::statics::StaticFile;
 use templates::statics::favicon_ico;
 
 fn main() {
-    let site_name = env!("WEBSITE_NAME");
+    let site_name = env::var("WEBSITE_NAME").unwrap();
     let server = Server::http("0.0.0.0:8000").unwrap();
 
     println!("listening on 8000");
@@ -22,7 +22,7 @@ fn main() {
                  request.headers(),
         );
         if request.method() == &Method::Get {
-            match handle_get(request, site_name) {
+            match handle_get(request, site_name.as_str()) {
                 Ok(_) => {}
                 Err(e) => {
                     println!("{}", e)
