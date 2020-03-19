@@ -1,8 +1,62 @@
-@use super::statics::coin2_png;
-@use super::statics::superdupont_jpg;
+@use super::statics::main_css;
+@use super::statics::main_js;
+@use super::statics::bg00_jpg;
+@use super::statics::bg01_jpg;
+@use super::statics::bg02_jpg;
+@use super::statics::bg03_jpg;
 @(website: &str)
 
-<h1>Hello on @website!</h1>
 
-<img src="/static/@coin2_png.name" />
-<img src="/static/@superdupont_jpg.name" />
+<!DOCTYPE HTML>
+<!--
+	Eventually by HTML5 UP
+	html5up.net | @@ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	source : https://html5up.net/eventually
+-->
+<html>
+<head>
+    <title>@website by Aedius</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/@main_css.name" />
+</head>
+<body class="is-preload">
+
+<!-- Header -->
+<header id="header">
+    <h1>@website</h1>
+    <p>est en cours de (re)construction ...<br />
+        Vous pouvez m'en rappeler l'existence sur l'oiseau <a href="https://twitter.com/Aedius">  🐦</a>
+        Ou l'éléphant : <a href="https://miaou.drycat.fr/@@Aedius">🐘</a>.
+    </p>
+    <p>
+        Aedius
+    </p>
+</header>
+
+<!-- Footer -->
+<footer id="footer">
+    <ul class="copyright">
+        <li>&copy; Untitled.</li>
+        <li>Credits: <a href="https://github.com/Aedius">Aedius</a></li>
+        <li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+</footer>
+
+<!-- Scripts -->
+
+<script>
+    function getimages()@{
+        return @{
+            'statics/@bg00_jpg.name': 'top',
+            'statics/@bg01_jpg.name': 'center',
+            'statics/@bg02_jpg.name': 'center',
+            'statics/@bg03_jpg.name': 'center',
+        @}
+	@}
+</script>
+<script src="statics/@main_js.name"></script>
+
+</body>
+</html>
