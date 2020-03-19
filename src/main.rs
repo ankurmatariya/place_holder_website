@@ -7,9 +7,10 @@ use tiny_http::{Method, Request, Response, Server, StatusCode};
 include!(concat!(env!("OUT_DIR"), "/templates.rs"));
 use templates::*;
 use templates::statics::StaticFile;
+use templates::statics::favicon_ico;
 
 fn main() {
-    let site_name = env!("WEBSITE_NAME");
+    let site_name = env::var("WEBSITE_NAME").unwrap();
     let server = Server::http("0.0.0.0:8000").unwrap();
 
     println!("listening on 8000");
@@ -21,7 +22,7 @@ fn main() {
                  request.headers(),
         );
         if request.method() == &Method::Get {
-            match handle_get(request, site_name) {
+            match handle_get(request, site_name.as_str()) {
                 Ok(_) => {}
                 Err(e) => {
                     println!("{}", e)
@@ -48,8 +49,16 @@ fn handle_get(request: Request, site_name: &str) -> Result<(), IoError> {
         return request.respond(response);
     }
 
+    if url == "/favicon.ico" {
+
+        let mime_type = favicon_ico.mime.to_string();
+        let mut response = tiny_http::Response::from_data(favicon_ico.content);
+        let header = tiny_http::Header::from_bytes(&b"Content-Type"[..], mime_type.into_bytes()).unwrap();
+        response.add_header(header);
+        return request.respond(response);
+    }
+
     let tokens:Vec<&str>= url.split("/").collect();
-    println!("{:?}",tokens);
 
     if tokens.len() != 3 {
         return request.respond(Response::new_empty(StatusCode(404)));
