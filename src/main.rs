@@ -11,9 +11,9 @@ use templates::statics::favicon_ico;
 
 fn main() {
     let site_name = env::var("WEBSITE_NAME").unwrap();
-    let server = Server::http("0.0.0.0:80").unwrap();
+    let server = Server::http("0.0.0.0:8000").unwrap();
 
-    println!("listening on 80");
+    println!("listening on 8000");
 
     for request in server.incoming_requests() {
         println!("received request!\n, method: {:?}\n, url: {:?}\n, headers: {:?}\n",
