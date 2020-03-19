@@ -11,6 +11,9 @@ jobs:
       matrix:
         rust-version: [stable, beta]
 
+    env:
+      WEBSITE_NAME: "github workflow"
+
     steps:
     - uses: actions/checkout@v1
     - name: rustup
