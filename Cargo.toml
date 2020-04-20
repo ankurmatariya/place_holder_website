@@ -9,5 +9,5 @@ build = "src/build.rs"
 ructe = { version = "^0.9.2",  features = ["mime03"] }
 
 [dependencies]
-tiny_http="0.6.2"
+tiny_http="0.7.0"
 mime = "~0.3"
